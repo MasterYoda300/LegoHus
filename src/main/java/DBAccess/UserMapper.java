@@ -1,12 +1,15 @@
 package DBAccess;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  The purpose of UserMapper is to...
@@ -55,5 +58,53 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
+    
+    
+public static List<Order> getOrders(User user)
+      {
+        List<Order> orders = new ArrayList<>();
+         try
+          {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM legohouse.Order WHERE User_id = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, user.getId());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+              {
+                int id = rs.getInt("id");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int height = rs.getInt("height");
+                Order order = new Order(id, length, width, height);
+                orders.add(order);
+              }
+            
+          } catch (ClassNotFoundException | SQLException ex)
+          {
+            ex.printStackTrace();
+          }
+         return orders;
+      }
 
-}
+    public static void createOrder(User user, int length, int width, int height)
+      {
+        try
+          {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO legohouse.Order (length, width, height, User_id) VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, length);
+            ps.setInt(2, width);
+            ps.setInt(3, height);
+            ps.setInt(4, user.getId());
+            ps.executeUpdate();
+          } catch (ClassNotFoundException | SQLException ex)
+          {
+            ex.printStackTrace();
+          }
+      }
+
+    }
+
+

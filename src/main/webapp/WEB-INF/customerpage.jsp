@@ -14,12 +14,18 @@
         <br>
         <form name="calculate" action="FrontController" method="POST">
             <input type="hidden" name="command" value="calculate">
-            Length:
+            <br> Length:
             <input type="text"name="Length"value="3">
-            Height:
+            <br> Height:
             <input type="text"name="Height"value="4">
-            Width:
+            <br> Width:
             <input type="text"name="Width"value="5">
             <input type="submit"value="submit">
+            </form>
+           
+           <form name="getOrders" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="getOrders">
+            <input type="submit" value="My previous orders">
+        </form>
             </body>
             </html>
