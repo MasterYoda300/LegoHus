@@ -9,7 +9,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>This is your house</h1>
+        <h1>Your House</h1>
         <% Order Order = (Order)request.getAttribute("Order"); %>
         <p><%=Order.getTotalBrick()%></p>
     </body>
