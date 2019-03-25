@@ -23,6 +23,8 @@ public class Register extends Command {
         } else {
             throw new LoginSampleException( "the two passwords did not match" );
         }
+        
+        
     }
 
 }

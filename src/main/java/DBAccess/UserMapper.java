@@ -58,7 +58,39 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-    
 
+
+public List<Order> getOrder() throws ClassNotFoundException  {
+        ArrayList<Order> orders = new ArrayList<>();
+        String SQL = "SELECT * FROM ORDER";
+
+       
+        int height = 0;
+        int length = 0;
+        int width = 0;
+        int totalBrick = 0;
+
+        try {
+           Connection con = Connector.connection(SQL);
+           PreparedStatement ps = con.prepareStatement( SQL );
+           ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                totalBrick = rs.getInt("totalBrick");
+                height = rs.getInt("HEIGHT");
+                length = rs.getInt("LENGTH");
+                width = rs.getInt("WIDTH");
+
+                orders.add(new Order(totalBrick, height, length, width));
+            }
+        } catch (SQLException ex) {
+
+        }
+        return orders;
+    }
 }
+
+
+
+
     

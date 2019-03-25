@@ -1,5 +1,6 @@
 package DBAccess;
 
+import static DBAccess.Connector.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
  @author kasper
  */
 public class Connector {
-
+    
     private static final String URL = "jdbc:mysql://46.101.253.149:3306/useradmin";
     private static final String USERNAME = "doorkeeper";
     private static final String PASSWORD = "bank3*andyouarein";
@@ -29,4 +30,23 @@ public class Connector {
         return singleton;
     }
 
-}
+    static Connection connection(String SQL) throws ClassNotFoundException, SQLException {
+      if ( singleton == null ) {
+            Class.forName( "com.mysql.cj.jdbc.Driver" );
+            singleton = DriverManager.getConnection( URL, USERNAME, PASSWORD );
+        }
+        return singleton;
+    }
+
+    
+    }
+
+   
+  
+   
+
+   
+
+    
+
+
