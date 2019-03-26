@@ -4,6 +4,8 @@
     Author     : artin
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>List of orders</h1>
+        
+        <%
+            List<Order> orders = (List) session.getAttribute("Order");
+        %> 
+        <hr>
+          
+        
     </body>
 </html>

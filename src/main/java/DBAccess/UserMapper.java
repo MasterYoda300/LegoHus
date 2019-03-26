@@ -69,6 +69,7 @@ public List<Order> getOrder() throws ClassNotFoundException  {
         int length = 0;
         int width = 0;
         int totalBrick = 0;
+        int Order_ID =0;
 
         try {
            Connection con = Connector.connection(SQL);
@@ -77,17 +78,19 @@ public List<Order> getOrder() throws ClassNotFoundException  {
 
             while (rs.next()) {
                 totalBrick = rs.getInt("totalBrick");
-                height = rs.getInt("HEIGHT");
-                length = rs.getInt("LENGTH");
-                width = rs.getInt("WIDTH");
+                height = rs.getInt("Height");
+                length = rs.getInt("Length");
+                width = rs.getInt("Width");
+                Order_ID = rs.getInt("Order_ID");
 
-                orders.add(new Order(totalBrick, height, length, width));
+                orders.add(new Order(Order_ID,totalBrick, height, length, width));
             }
         } catch (SQLException ex) {
 
         }
         return orders;
     }
+
 }
 
 

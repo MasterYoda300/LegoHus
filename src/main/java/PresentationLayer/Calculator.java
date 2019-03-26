@@ -21,8 +21,9 @@ public class Calculator extends Command {
         int height = Integer.parseInt(request.getParameter("Height"));
         int width = Integer.parseInt(request.getParameter("Width"));
         int length = Integer.parseInt(request.getParameter("Length"));
+        int Order_ID = Integer.parseInt(request.getParameter("Order_ID"));
         int bricks = calc.calculater(height, width, length);
-        Order Order1 = new Order(height,width,length,bricks);
+        Order Order1 = new Order(Order_ID,height,width,length,bricks);
         
         request.setAttribute("Order", Order1);
         return "placeOrder";
