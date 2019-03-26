@@ -6,16 +6,15 @@ public class Order {
     private int width;
     private int length;
     private int totalBrick;
-    private int Order_ID;
+    private int User_ID;
 
-    public Order(int height, int width, int length, int totalBrick, int Order_ID) {
+    public Order(int height, int width, int length, int totalBrick, int User_ID) {
         this.height = height;
         this.width = width;
         this.length = length;
         this.totalBrick = totalBrick;
-        this.Order_ID = Order_ID;
+        this.User_ID = User_ID;
     }
-    
 
     public int getHeight() {
         return height;
@@ -49,14 +48,15 @@ public class Order {
         this.totalBrick = totalBrick;
     }
 
-    public int getOrder_ID() {
-        return Order_ID;
+    public int getUser_ID() {
+        return User_ID;
     }
 
-    public void setOrder_ID(int Order_ID) {
-        this.Order_ID = Order_ID;
+    public void setUser_ID(int User_ID) {
+        this.User_ID = User_ID;
     }
-    
+
+ 
     
 }
 
