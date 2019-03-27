@@ -7,6 +7,7 @@ package DBAccess;
 
 import FunctionLayer.Order;
 import FunctionLayer.User;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,15 +21,16 @@ import java.util.logging.Logger;
  */
 public class OrderMapper {
     // tester nye metoede view order virker ikke!
-public static void createOrder(User user, Order order) throws SQLException, ClassNotFoundException, Exception {
+public static void createOrder( Order order) throws SQLException, ClassNotFoundException, Exception {
             try {
-                Connector connect = new Connector();
+                //Connector connect = new Connector();
+                Connection connect = Connector.connection();
 
                 String addOrder
                         = "INSERT INTO legoDB.Orders (`User_ID`, `Length`, `Width`, `Height`) "
                         + "VALUES(?,?,?,?);";
 
-                PreparedStatement ps = connect.connection().prepareStatement(addOrder);
+                PreparedStatement ps = connect.prepareStatement(addOrder);
                 ps.setInt(1, order.getUser_ID());
                 ps.setInt(2, order.getLength());
                 ps.setInt(3, order.getWidth());

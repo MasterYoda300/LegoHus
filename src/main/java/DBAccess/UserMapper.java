@@ -72,7 +72,7 @@ public List<Order> getOrder() throws ClassNotFoundException  {
         int Order_ID =0;
 
         try {
-           Connection con = Connector.connection(SQL);
+           Connection con = Connector.connection();
            PreparedStatement ps = con.prepareStatement( SQL );
            ResultSet rs = ps.executeQuery();
 

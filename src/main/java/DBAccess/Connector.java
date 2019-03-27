@@ -30,13 +30,13 @@ public class Connector {
         return singleton;
     }
 
-    static Connection connection(String SQL) throws ClassNotFoundException, SQLException {
-      if ( singleton == null ) {
-            Class.forName( "com.mysql.cj.jdbc.Driver" );
-            singleton = DriverManager.getConnection( URL, USERNAME, PASSWORD );
-        }
-        return singleton;
-    }
+//    static Connection connection(String SQL) throws ClassNotFoundException, SQLException {
+//      if ( singleton == null ) {
+//            Class.forName( "com.mysql.cj.jdbc.Driver" );
+//            singleton = DriverManager.getConnection( URL, USERNAME, PASSWORD );
+//        }
+//        return singleton;
+//    }
 
     
     }
